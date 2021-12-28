@@ -1,0 +1,35 @@
+{
+  "name": "vnnative3-location",
+  "version": "1.0.0",
+  "description": "Pieces of Vn Native Framework",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "npm run build",
+    "build":"tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steveleetn91/vnnative3-location.git"
+  },
+  "keywords": [
+    "vnnative",
+    "vnf",
+    "vnf3",
+    "hoanglee",
+    "stevelee",
+    "typescript",
+    "location",
+    "module"
+  ],
+  "author": "stevelee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/steveleetn91/vnnative3-location/issues"
+  },
+  "homepage": "https://github.com/steveleetn91/vnnative3-location#readme",
+  "dependencies": {
+    "typescript": "^4.5.4"
+  }
+}
