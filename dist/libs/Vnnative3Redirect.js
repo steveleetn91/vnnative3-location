@@ -35,6 +35,7 @@ class Vnnative3Redirect {
             else {
                 link = url;
             }
+            return link;
         }
         let queryString = "?";
         for (let i = 0; i < query.length; i++) {

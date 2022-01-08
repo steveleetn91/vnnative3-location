@@ -36,6 +36,7 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
             } else {
                 link = url;
             }
+            return link;
         }
         let queryString = "?";
         for(let i=0;i<query.length;i++){
