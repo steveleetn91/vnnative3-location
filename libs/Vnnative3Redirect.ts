@@ -24,9 +24,9 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
             if((i+1) == query.length) {
                 
                 if(os?.getAttribute("content") === "android") {
-                    window.location.href = '/android_asset/index.html?vn3page=' + url;
+                    window.location.href = '/android_asset/index.html' + queryString + '&vn3page=' + url;
                 } else if (os?.getAttribute("content") === "iOS") {
-                    window.location.href = './index.html?vn3page=' + url;
+                    window.location.href = './index.html' + queryString + '&vn3page=' + url;
                 } else {
                     window.location.href = url + queryString;
                 }
@@ -41,9 +41,9 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
         os = document.getElementById("os");
         if(query.length < 1) {
             if(os?.getAttribute("content") === "android") {
-                window.location.href = '/android_asset/index.html?vn3page=' + url;
+                link = '/android_asset/index.html?vn3page=' + url;
             } else if (os?.getAttribute("content") === "iOS") {
-                window.location.href = './index.html?vn3page=' + url;
+                link = './index.html?vn3page=' + url;
             } else {
                 link = url;
             }
@@ -55,9 +55,9 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
             if((i+1) == query.length) {
                 
                 if(os?.getAttribute("content") === "android") {
-                    window.location.href = '/android_asset/index.html?vn3page=' + url;
+                    link = '/android_asset/index.html' + queryString + '&vn3page=' + url;
                 } else if (os?.getAttribute("content") === "iOS") {
-                    window.location.href = './index.html?vn3page=' + url;
+                    link = './index.html' + queryString + '&vn3page=' + url;
                 } else {
                     link = url + queryString;
                 }

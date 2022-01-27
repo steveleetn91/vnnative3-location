@@ -21,10 +21,10 @@ class Vnnative3Redirect {
             queryString += `${query[i]['key']}=${query[i]['value']}`;
             if ((i + 1) == query.length) {
                 if ((os === null || os === void 0 ? void 0 : os.getAttribute("content")) === "android") {
-                    window.location.href = '/android_asset/index.html?vn3page=' + url;
+                    window.location.href = '/android_asset/index.html' + queryString + '&vn3page=' + url;
                 }
                 else if ((os === null || os === void 0 ? void 0 : os.getAttribute("content")) === "iOS") {
-                    window.location.href = './index.html?vn3page=' + url;
+                    window.location.href = './index.html' + queryString + '&vn3page=' + url;
                 }
                 else {
                     window.location.href = url + queryString;
@@ -40,10 +40,10 @@ class Vnnative3Redirect {
         os = document.getElementById("os");
         if (query.length < 1) {
             if ((os === null || os === void 0 ? void 0 : os.getAttribute("content")) === "android") {
-                window.location.href = '/android_asset/index.html?vn3page=' + url;
+                link = '/android_asset/index.html?vn3page=' + url;
             }
             else if ((os === null || os === void 0 ? void 0 : os.getAttribute("content")) === "iOS") {
-                window.location.href = './index.html?vn3page=' + url;
+                link = './index.html?vn3page=' + url;
             }
             else {
                 link = url;
@@ -55,10 +55,10 @@ class Vnnative3Redirect {
             queryString += `${query[i]['key']}=${query[i]['value']}`;
             if ((i + 1) == query.length) {
                 if ((os === null || os === void 0 ? void 0 : os.getAttribute("content")) === "android") {
-                    window.location.href = '/android_asset/index.html?vn3page=' + url;
+                    link = '/android_asset/index.html' + queryString + '&vn3page=' + url;
                 }
                 else if ((os === null || os === void 0 ? void 0 : os.getAttribute("content")) === "iOS") {
-                    window.location.href = './index.html?vn3page=' + url;
+                    link = './index.html' + queryString + '&vn3page=' + url;
                 }
                 else {
                     link = url + queryString;
