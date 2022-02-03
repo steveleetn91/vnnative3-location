@@ -7,3 +7,4 @@
 /platforms/web/tmp/pages/*
 .env
 /public/assets
+/dist

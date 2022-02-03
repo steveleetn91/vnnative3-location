@@ -1,3 +1,4 @@
+import VnNativeOsIndex from "vnnative-3-os/dist/index";
 export interface Vnnative3RedirectInterface {
     go(url : string,query : Array<{key:string;value:string}>) : void 
     goUrl(url : string,query : Array<{key:string;value:string}>) : string | undefined
@@ -6,13 +7,12 @@ export interface Vnnative3RedirectInterface {
 export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
     go(url : string,query : Array<{key:string;value:string}>) : void {
         const pathName = window.location.pathname;
-        let os : HTMLElement | null;
-        os = document.getElementById("os");
-
+        let os : String;
+        os = (new VnNativeOsIndex).isOs();
         if(query.length < 1) {
-            if(os?.getAttribute("content") === "android") {
+            if(os === "android") {
                 window.location.href = '/android_asset/index.html?vn3page=' + url;
-            } else if (os?.getAttribute("content") === "iOS") {
+            } else if (os === "iOS") {
                 window.location.href = './index.html?vn3page=' + url;
             } else {
                 window.location.href=url;
@@ -22,10 +22,9 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
         for(let i=0;i<query.length;i++){
             queryString += `${query[i]['key']}=${query[i]['value']}`;
             if((i+1) == query.length) {
-                
-                if(os?.getAttribute("content") === "android") {
+                if(os === "android") {
                     window.location.href = '/android_asset/index.html' + queryString + '&vn3page=' + url;
-                } else if (os?.getAttribute("content") === "iOS") {
+                } else if (os === "iOS") {
                     window.location.href = './index.html' + queryString + '&vn3page=' + url;
                 } else {
                     window.location.href = url + queryString;
@@ -37,12 +36,12 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
     goUrl(url : string,query : Array<{key:string;value:string}>): string | undefined {
         let link = "";
         const pathName = window.location.pathname;
-        let os : HTMLElement | null;
-        os = document.getElementById("os");
+        let os : String;
+        os = (new VnNativeOsIndex).isOs();
         if(query.length < 1) {
-            if(os?.getAttribute("content") === "android") {
+            if(os === "android") {
                 link = '/android_asset/index.html?vn3page=' + url;
-            } else if (os?.getAttribute("content") === "iOS") {
+            } else if (os === "iOS") {
                 link = './index.html?vn3page=' + url;
             } else {
                 link = url;
@@ -54,9 +53,9 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
             queryString += `${query[i]['key']}=${query[i]['value']}`;
             if((i+1) == query.length) {
                 
-                if(os?.getAttribute("content") === "android") {
+                if(os === "android") {
                     link = '/android_asset/index.html' + queryString + '&vn3page=' + url;
-                } else if (os?.getAttribute("content") === "iOS") {
+                } else if (os === "iOS") {
                     link = './index.html' + queryString + '&vn3page=' + url;
                 } else {
                     link = url + queryString;
