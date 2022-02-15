@@ -1,39 +1,38 @@
 import VnNativeOsIndex from "vnnative-3-os/dist/index";
 export interface Vnnative3RedirectInterface {
-    go(url : string,query : Array<{key:string;value:string}>) : void 
-    goUrl(url : string,query : Array<{key:string;value:string}>) : string | undefined
-    back() : void 
+    go(url: string, query: Array<{ key: string; value: string }>): void
+    goUrl(url: string, query: Array<{ key: string; value: string }>): string | undefined
+    back(): void
 }
 export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
-    go(url : string,query : Array<{key:string;value:string}>) : void {
+    go(url: string, query: Array<{ key: string; value: string }>): void {
         const pathName = window.location.pathname;
-        let os : String;
+        let os: String;
         os = (new VnNativeOsIndex).isOs();
-
-        let metaBase : HTMLElement | null = document.getElementById("base");
-        let href : string | null = "";
-
-        if( typeof metaBase != null) {
-            href = metaBase?.getAttribute("href") ? metaBase?.getAttribute("href") : "";
+        let href: string = "";
+        let baseUrl: string | null | undefined = "";
+        baseUrl = document.getElementById("base") ? document.getElementById("base")?.getAttribute("href") : "";
+        if (typeof baseUrl == "string") {
+            href = baseUrl;
         }
 
-        if(query.length < 1) {
-            if(os === "android") {
+        if (query.length < 1) {
+            if (os === "android") {
                 window.location.href = href + '/android_asset/index.html?vn3page=' + url;
             } else if (os === "iOS") {
                 window.location.href = href + './index.html?vn3page=' + url;
             } else {
-                window.location.href= href + url;
+                window.location.href = href + url;
             }
         }
         let queryString = "?";
-        for(let i=0;i<query.length;i++){
+        for (let i = 0; i < query.length; i++) {
             queryString += `${query[i]['key']}=${query[i]['value']}`;
-            if((i+1) == query.length) {
-                if(os === "android") {
+            if ((i + 1) == query.length) {
+                if (os === "android") {
                     window.location.href = '/android_asset' + href + '/index.html' + queryString + '&vn3page=' + url;
                 } else if (os === "iOS") {
-                    window.location.href =  "." + href + '/index.html' + queryString + '&vn3page=' + url;
+                    window.location.href = "." + href + '/index.html' + queryString + '&vn3page=' + url;
                 } else {
                     window.location.href = href + url + queryString;
                 }
@@ -41,21 +40,21 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
             }
         }
     }
-    goUrl(url : string,query : Array<{key:string;value:string}>): string | undefined {
+    goUrl(url: string, query: Array<{ key: string; value: string }>): string | undefined {
         let link = "";
         const pathName = window.location.pathname;
-        let os : String;
+        let os: String;
         os = (new VnNativeOsIndex).isOs();
 
-        let metaBase : HTMLElement | null = document.getElementById("base");
-        let href : string | null = "";
-
-        if( typeof metaBase != null) {
-            href = metaBase?.getAttribute("href") ? metaBase?.getAttribute("href") : "";
+        let href: string = "";
+        let baseUrl: string | null | undefined = "";
+        baseUrl = document.getElementById("base") ? document.getElementById("base")?.getAttribute("href") : "";
+        if (typeof baseUrl == "string") {
+            href = baseUrl;
         }
 
-        if(query.length < 1) {
-            if(os === "android") {
+        if (query.length < 1) {
+            if (os === "android") {
                 link = '/android_asset' + href + '/index.html?vn3page=' + url;
             } else if (os === "iOS") {
                 link = '.' + href + '/index.html?vn3page=' + url;
@@ -65,11 +64,11 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
             return link;
         }
         let queryString = "?";
-        for(let i=0;i<query.length;i++){
+        for (let i = 0; i < query.length; i++) {
             queryString += `${query[i]['key']}=${query[i]['value']}`;
-            if((i+1) == query.length) {
-                
-                if(os === "android") {
+            if ((i + 1) == query.length) {
+
+                if (os === "android") {
                     link = '/android_asset' + href + '/index.html' + queryString + '&vn3page=' + url;
                 } else if (os === "iOS") {
                     link = "." + href + '/index.html' + queryString + '&vn3page=' + url;
@@ -80,7 +79,7 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
             }
         }
     }
-    back() : void {
+    back(): void {
         window.history.back();
     }
 }
