@@ -67,7 +67,6 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
         for (let i = 0; i < query.length; i++) {
             queryString += `${query[i]['key']}=${query[i]['value']}`;
             if ((i + 1) == query.length) {
-
                 if (os === "android") {
                     link = '/android_asset' + href + '/index.html' + queryString + '&vn3page=' + url;
                 } else if (os === "iOS") {
