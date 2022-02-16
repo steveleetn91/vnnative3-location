@@ -1,11 +1,11 @@
 import VnNativeOsIndex from "vnnative-3-os/dist/index";
 export interface Vnnative3RedirectInterface {
-    go(url: string, query: Array<{ key: string; value: string }>): void
-    goUrl(url: string, query: Array<{ key: string; value: string }>): string | undefined
+    go(url: string, query: Array<{ key: string; value: string }>,packageName : string): void
+    goUrl(url: string, query: Array<{ key: string; value: string }>,packageName : string): string | undefined
     back(): void
 }
 export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
-    go(url: string, query: Array<{ key: string; value: string }>): void {
+    go(url: string, query: Array<{ key: string; value: string }>,packageName : string = ""): void {
         const pathName = window.location.pathname;
         let os: String;
         os = (new VnNativeOsIndex).isOs();
@@ -14,6 +14,8 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
         baseUrl = document.getElementById("base") ? document.getElementById("base")?.getAttribute("href") : "";
         if (typeof baseUrl == "string") {
             href = baseUrl;
+        } else if(packageName !== ""){
+            href = packageName;
         }
 
         if (query.length < 1) {
@@ -40,7 +42,7 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
             }
         }
     }
-    goUrl(url: string, query: Array<{ key: string; value: string }>): string | undefined {
+    goUrl(url: string, query: Array<{ key: string; value: string }>,packageName : string = ""): string | undefined {
         let link = "";
         const pathName = window.location.pathname;
         let os: String;
@@ -51,6 +53,8 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
         baseUrl = document.getElementById("base") ? document.getElementById("base")?.getAttribute("href") : "";
         if (typeof baseUrl == "string") {
             href = baseUrl;
+        } else if(packageName !== ""){
+            href = packageName;
         }
 
         if (query.length < 1) {
