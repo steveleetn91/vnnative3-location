@@ -6,13 +6,12 @@ export interface Vnnative3RedirectInterface {
 }
 export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
     go(url: string, query: Array<{ key: string; value: string }>,packageName : string = ""): void {
-        const pathName = window.location.pathname;
         let os: String;
         os = (new VnNativeOsIndex).isOs();
         let href: string = "";
         let baseUrl: string | null | undefined = "";
         baseUrl = document.getElementById("base") ? document.getElementById("base")?.getAttribute("href") : "";
-        if (typeof baseUrl == "string" && baseUrl !== "") {
+        if (typeof baseUrl == "string" && packageName === "") {
             href = baseUrl;
         } else if(packageName !== ""){
             href = packageName;
@@ -44,14 +43,13 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
     }
     goUrl(url: string, query: Array<{ key: string; value: string }>,packageName : string = ""): string | undefined {
         let link = "";
-        const pathName = window.location.pathname;
         let os: String;
         os = (new VnNativeOsIndex).isOs();
 
         let href: string = "";
         let baseUrl: string | null | undefined = "";
         baseUrl = document.getElementById("base") ? document.getElementById("base")?.getAttribute("href") : "";
-        if (typeof baseUrl == "string"  && baseUrl !== "" ) {
+        if (typeof baseUrl == "string"  && packageName === "" ) {
             href = baseUrl;
         } else if(packageName !== ""){
             href = packageName;
