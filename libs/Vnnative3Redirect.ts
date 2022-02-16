@@ -12,7 +12,7 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
         let href: string = "";
         let baseUrl: string | null | undefined = "";
         baseUrl = document.getElementById("base") ? document.getElementById("base")?.getAttribute("href") : "";
-        if (typeof baseUrl == "string") {
+        if (typeof baseUrl == "string" && baseUrl !== "") {
             href = baseUrl;
         } else if(packageName !== ""){
             href = packageName;
@@ -22,7 +22,7 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
             if (os === "android") {
                 window.location.href =  '/android_asset' + href + '/index.html?vn3page=' + url;
             } else if (os === "iOS") {
-                window.location.href = href + './index.html?vn3page=' + url;
+                window.location.href =  "." + href + '/index.html?vn3page=' + url;
             } else {
                 window.location.href = href + url;
             }
@@ -51,7 +51,7 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
         let href: string = "";
         let baseUrl: string | null | undefined = "";
         baseUrl = document.getElementById("base") ? document.getElementById("base")?.getAttribute("href") : "";
-        if (typeof baseUrl == "string") {
+        if (typeof baseUrl == "string"  && baseUrl !== "" ) {
             href = baseUrl;
         } else if(packageName !== ""){
             href = packageName;
