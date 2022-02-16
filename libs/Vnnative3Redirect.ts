@@ -18,7 +18,7 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
 
         if (query.length < 1) {
             if (os === "android") {
-                window.location.href = href + '/android_asset/index.html?vn3page=' + url;
+                window.location.href =  '/android_asset' + href + '/index.html?vn3page=' + url;
             } else if (os === "iOS") {
                 window.location.href = href + './index.html?vn3page=' + url;
             } else {
