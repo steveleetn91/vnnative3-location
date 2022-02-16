@@ -13,9 +13,8 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
         baseUrl = document.getElementById("base") ? document.getElementById("base")?.getAttribute("href") : "";
         if (typeof baseUrl == "string" && packageName === "") {
             href = baseUrl;
-        } else if(packageName !== ""){
-            href = packageName;
-        }
+        } 
+        href += packageName;
 
         if (query.length < 1) {
             if (os === "android") {
@@ -51,10 +50,9 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
         baseUrl = document.getElementById("base") ? document.getElementById("base")?.getAttribute("href") : "";
         if (typeof baseUrl == "string"  && packageName === "" ) {
             href = baseUrl;
-        } else if(packageName !== ""){
-            href = packageName;
-        }
-
+        } 
+        href += packageName;
+        
         if (query.length < 1) {
             if (os === "android") {
                 link = '/android_asset' + href + '/index.html?vn3page=' + url;
