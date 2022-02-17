@@ -1,91 +1,70 @@
 import VnNativeOsIndex from "vnnative-3-os/dist/index";
 export interface Vnnative3RedirectInterface {
-    go(url: string, query: Array<{ key: string; value: string }>,packageName : string): void
-    goUrl(url: string, query: Array<{ key: string; value: string }>,packageName : string): string | undefined
-    back(): void
+    go(url : string,query : Array<{key:string;value:string}>) : void 
+    goUrl(url : string,query : Array<{key:string;value:string}>) : string | undefined
+    back() : void 
 }
 export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
-    go(url: string, query: Array<{ key: string; value: string }>,packageName : string = ""): void {
-        let os: String;
+    go(url : string,query : Array<{key:string;value:string}>) : void {
+        const pathName = window.location.pathname;
+        let os : String;
         os = (new VnNativeOsIndex).isOs();
-        let href: string = "";
-        let baseUrl: string | null | undefined = "";
-        baseUrl = document.getElementById("base") ? document.getElementById("base")?.getAttribute("href") : "";
-        if (typeof baseUrl == "string" && packageName === "") {
-            if(baseUrl !== "/") {
-                href = baseUrl;
-            }
-        } else {
-            href += packageName;
-        }
-
-        if (query.length < 1) {
-            if (os === "android") {
-                window.location.href =  href + '/index.html?vn3page=' + url;
+        if(query.length < 1) {
+            if(os === "android") {
+                window.location.href = '/android_asset/index.html?vn3page=' + url;
             } else if (os === "iOS") {
-                window.location.href =  "." + href + '/index.html?vn3page=' + url;
+                window.location.href = './index.html?vn3page=' + url;
             } else {
-                window.location.href = href + url;
+                window.location.href=url;
             }
         }
         let queryString = "?";
-        for (let i = 0; i < query.length; i++) {
+        for(let i=0;i<query.length;i++){
             queryString += `${query[i]['key']}=${query[i]['value']}`;
-            if ((i + 1) == query.length) {
-                if (os === "android") {
-                    window.location.href = href + '/index.html' + queryString + '&vn3page=' + url;
+            if((i+1) == query.length) {
+                if(os === "android") {
+                    window.location.href = '/android_asset/index.html' + queryString + '&vn3page=' + url;
                 } else if (os === "iOS") {
-                    window.location.href = "." + href + '/index.html' + queryString + '&vn3page=' + url;
+                    window.location.href = './index.html' + queryString + '&vn3page=' + url;
                 } else {
-                    window.location.href = href + url + queryString;
+                    window.location.href = url + queryString;
                 }
                 return;
             }
         }
     }
-    goUrl(url: string, query: Array<{ key: string; value: string }>,packageName : string = ""): string | undefined {
+    goUrl(url : string,query : Array<{key:string;value:string}>): string | undefined {
         let link = "";
-        let os: String;
+        const pathName = window.location.pathname;
+        let os : String;
         os = (new VnNativeOsIndex).isOs();
-
-        let href: string = "";
-        let baseUrl: string | null | undefined = "";
-        baseUrl = document.getElementById("base") ? document.getElementById("base")?.getAttribute("href") : "";
-        if (typeof baseUrl == "string"  && packageName === "" ) {
-            if(baseUrl !== "/") {
-                href = baseUrl;
-            }
-            
-        } else {
-            href += packageName;
-        }
-        
-        if (query.length < 1) {
-            if (os === "android") {
-                link = href + '/index.html?vn3page=' + url;
+        if(query.length < 1) {
+            if(os === "android") {
+                link = '/android_asset/index.html?vn3page=' + url;
             } else if (os === "iOS") {
-                link = '.' + href + '/index.html?vn3page=' + url;
+                link = './index.html?vn3page=' + url;
             } else {
-                link = href + url;
+                link = url;
             }
             return link;
         }
         let queryString = "?";
-        for (let i = 0; i < query.length; i++) {
+        for(let i=0;i<query.length;i++){
             queryString += `${query[i]['key']}=${query[i]['value']}`;
-            if ((i + 1) == query.length) {
-                if (os === "android") {
-                    link = href + '/index.html' + queryString + '&vn3page=' + url;
+            if((i+1) == query.length) {
+                
+                if(os === "android") {
+                    link = '/android_asset/index.html' + queryString + '&vn3page=' + url;
                 } else if (os === "iOS") {
-                    link = "." + href + '/index.html' + queryString + '&vn3page=' + url;
+                    link = './index.html' + queryString + '&vn3page=' + url;
                 } else {
-                    link = href + url + queryString;
+                    link = url + queryString;
                 }
                 return link;
             }
         }
     }
-    back(): void {
+    back() : void {
         window.history.back();
     }
 }
