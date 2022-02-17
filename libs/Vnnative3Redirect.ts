@@ -13,12 +13,13 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
         baseUrl = document.getElementById("base") ? document.getElementById("base")?.getAttribute("href") : "";
         if (typeof baseUrl == "string" && packageName === "") {
             href = baseUrl;
-        } 
-        href += packageName;
+        } else {
+            href += packageName;
+        }
 
         if (query.length < 1) {
             if (os === "android") {
-                window.location.href =  '/android_asset' + href + '/index.html?vn3page=' + url;
+                window.location.href =  href + '/index.html?vn3page=' + url;
             } else if (os === "iOS") {
                 window.location.href =  "." + href + '/index.html?vn3page=' + url;
             } else {
@@ -30,7 +31,7 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
             queryString += `${query[i]['key']}=${query[i]['value']}`;
             if ((i + 1) == query.length) {
                 if (os === "android") {
-                    window.location.href = '/android_asset' + href + '/index.html' + queryString + '&vn3page=' + url;
+                    window.location.href = href + '/index.html' + queryString + '&vn3page=' + url;
                 } else if (os === "iOS") {
                     window.location.href = "." + href + '/index.html' + queryString + '&vn3page=' + url;
                 } else {
@@ -50,12 +51,13 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
         baseUrl = document.getElementById("base") ? document.getElementById("base")?.getAttribute("href") : "";
         if (typeof baseUrl == "string"  && packageName === "" ) {
             href = baseUrl;
-        } 
-        href += packageName;
+        } else {
+            href += packageName;
+        }
         
         if (query.length < 1) {
             if (os === "android") {
-                link = '/android_asset' + href + '/index.html?vn3page=' + url;
+                link = href + '/index.html?vn3page=' + url;
             } else if (os === "iOS") {
                 link = '.' + href + '/index.html?vn3page=' + url;
             } else {
@@ -68,7 +70,7 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
             queryString += `${query[i]['key']}=${query[i]['value']}`;
             if ((i + 1) == query.length) {
                 if (os === "android") {
-                    link = '/android_asset' + href + '/index.html' + queryString + '&vn3page=' + url;
+                    link = href + '/index.html' + queryString + '&vn3page=' + url;
                 } else if (os === "iOS") {
                     link = "." + href + '/index.html' + queryString + '&vn3page=' + url;
                 } else {
