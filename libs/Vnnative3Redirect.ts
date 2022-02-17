@@ -12,7 +12,9 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
         let baseUrl: string | null | undefined = "";
         baseUrl = document.getElementById("base") ? document.getElementById("base")?.getAttribute("href") : "";
         if (typeof baseUrl == "string" && packageName === "") {
-            href = baseUrl;
+            if(baseUrl !== "/") {
+                href = baseUrl;
+            }
         } else {
             href += packageName;
         }
@@ -50,7 +52,10 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
         let baseUrl: string | null | undefined = "";
         baseUrl = document.getElementById("base") ? document.getElementById("base")?.getAttribute("href") : "";
         if (typeof baseUrl == "string"  && packageName === "" ) {
-            href = baseUrl;
+            if(baseUrl !== "/") {
+                href = baseUrl;
+            }
+            
         } else {
             href += packageName;
         }
