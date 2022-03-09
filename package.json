@@ -1,6 +1,6 @@
 {
   "name": "vnnative3-location",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "description": "Pieces of Vn Native Framework",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
