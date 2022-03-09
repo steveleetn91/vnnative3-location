@@ -15,7 +15,7 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
             } else if (os === "iOS") {
                 history.pushState({}, '', './index.html?vn3page=' + url)
             } else {
-                history.pushState({}, '', './index.html?vn3page=' + url)
+                history.pushState({}, '', url)
             }
         }
         let queryString = "?";
