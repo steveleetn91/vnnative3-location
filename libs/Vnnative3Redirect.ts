@@ -39,7 +39,7 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
         let os : String;
         os = (new VnNativeOsIndex).isOs();
         if(query.length < 1) {
-            if(os === "android") {
+            if(os === "Android") {
                 link = './index.html?vn3page=' + url;
             } else if (os === "iOS") {
                 link = './index.html?vn3page=' + url;
