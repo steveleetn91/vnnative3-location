@@ -10,8 +10,8 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
         let os : String;
         os = (new VnNativeOsIndex).isOs();
         if(query.length < 1) {
-            if(os === "android") {
-                window.location.href = '/android_asset/index.html?vn3page=' + url;
+            if(os === "Android") {
+                window.location.href = './index.html?vn3page=' + url;
             } else if (os === "iOS") {
                 window.location.href = './index.html?vn3page=' + url;
             } else {
@@ -23,7 +23,7 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
             queryString += `${query[i]['key']}=${query[i]['value']}`;
             if((i+1) == query.length) {
                 if(os === "android") {
-                    window.location.href = '/android_asset/index.html' + queryString + '&vn3page=' + url;
+                    window.location.href = './index.html' + queryString + '&vn3page=' + url;
                 } else if (os === "iOS") {
                     window.location.href = './index.html' + queryString + '&vn3page=' + url;
                 } else {
@@ -40,7 +40,7 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
         os = (new VnNativeOsIndex).isOs();
         if(query.length < 1) {
             if(os === "android") {
-                link = '/android_asset/index.html?vn3page=' + url;
+                link = './index.html?vn3page=' + url;
             } else if (os === "iOS") {
                 link = './index.html?vn3page=' + url;
             } else {
@@ -54,7 +54,7 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
             if((i+1) == query.length) {
                 
                 if(os === "android") {
-                    link = '/android_asset/index.html' + queryString + '&vn3page=' + url;
+                    link = './index.html' + queryString + '&vn3page=' + url;
                 } else if (os === "iOS") {
                     link = './index.html' + queryString + '&vn3page=' + url;
                 } else {
