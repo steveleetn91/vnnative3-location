@@ -1,5 +1,5 @@
 import VnNativeOsIndex from "vnnative-3-os/dist/index";
-var EM = require('es-event-emitter');
+
 export interface Vnnative3RedirectInterface {
     go(url : string,query : Array<{key:string;value:string}>) : void 
     goUrl(url : string,query : Array<{key:string;value:string}>) : string | undefined
@@ -18,7 +18,6 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
             } else {
                 history.pushState({}, '', url)
             }
-            EM.emit('vnf3pagechange');
             return
         }
         let queryString = "?";
@@ -32,7 +31,6 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
                 } else {
                     history.pushState({}, '', url + queryString)
                 }
-                EM.emit('vnf3pagechange');
                 return;
             }
         }
