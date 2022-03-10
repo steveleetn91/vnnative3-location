@@ -1,6 +1,6 @@
 {
   "name": "vnnative3-location",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "description": "Pieces of Vn Native Framework",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -31,6 +31,7 @@
   "homepage": "https://github.com/steveleetn91/vnnative3-location#readme",
   "dependencies": {
     "@types/node": "^17.0.8",
+    "es-event-emitter": "^1.3.9",
     "typescript": "^4.5.4",
     "vnnative-3-os": "^1.0.0"
   }
