@@ -4,6 +4,7 @@ export interface Vnnative3RedirectInterface {
     go(url : string,query : Array<{key:string;value:string}>) : void 
     goUrl(url : string,query : Array<{key:string;value:string}>) : string | undefined
     back() : void 
+    supportMoveScreen() : void 
 }
 export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
     go(url : string,query : Array<{key:string;value:string}>) : void {
@@ -68,5 +69,17 @@ export default class Vnnative3Redirect implements Vnnative3RedirectInterface {
     }
     back() : void {
         window.history.back();
+    }
+    supportMoveScreen(): void {
+        let links : NodeListOf<Element> = document.querySelectorAll("#root a");
+        links.forEach((link : Element) => {
+            link.addEventListener("click",(ev : Event) => {
+                let routerLink : string | null = link.getAttribute("link");
+                let go : string = routerLink != null ? routerLink : "";
+                if(go !== "" ) {
+                    this.go(go,[]);
+                }
+            })
+        })
     }
 }
